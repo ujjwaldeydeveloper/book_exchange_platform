@@ -36,6 +36,8 @@ class Book {
   bool? availabilityStatus;
   @JsonKey(name: "bookType")
   String? bookType;
+  @JsonKey(name: "bookImageUrl")
+  String? bookImageUrl;
 
   Book({
     this.id,
@@ -47,6 +49,7 @@ class Book {
     this.bookCondition,
     this.availabilityStatus,
     this.bookType,
+    this.bookImageUrl,
   });
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
