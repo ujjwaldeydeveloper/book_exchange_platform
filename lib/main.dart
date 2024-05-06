@@ -1,9 +1,11 @@
+import 'package:book_exchange_platform/config/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_appbar.dart';
 import 'home_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
       theme: ThemeData(
@@ -11,6 +13,7 @@ void main() {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRoutes.onGenerateRoutes,
       home: const MyApp(),
     ),
   );

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -6,12 +8,12 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Expanded(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-           Padding(
+           const Padding(
              padding: EdgeInsets.only(left: 8.0),
              child: Row(
                children: [
@@ -20,28 +22,32 @@ class CustomAppBar extends StatelessWidget {
                ],
              ),
            ),
-           Gap(20),
+           const Gap(20),
             Row(
               children: [
-                Text('HOME',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),),
-                Gap(50),
-                Text('SHOP',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),),
-                Gap(50),
-                Text('CONTACT',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),),
-                Gap(50),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed('/'),
+                  child: const Text('HOME',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),)),
+                const Gap(50),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed('/shop'),
+                  child: const Text('SHOP',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),)),
+                const Gap(50),
+                const Text('CONTACT',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),),
+                const Gap(50),
               ],
             ),
-            Gap(20),
-            Icon(Icons.shopping_cart),
-            Gap(20),
-            Row(
+            const Gap(20),
+            const Icon(Icons.shopping_cart),
+            const Gap(20),
+            const Row(
               children: [
                 Text('Log In',style:TextStyle(fontSize: 20, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),),
                 Gap(10),
                 FittedBox(fit:BoxFit.cover, child : Icon(Icons.account_circle)),
               ],
             ),
-            Gap(20),
+            const Gap(20),
           ],
         ),
       ),
