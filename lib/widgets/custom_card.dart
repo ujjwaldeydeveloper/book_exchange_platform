@@ -1,7 +1,6 @@
 import 'package:book_exchange_platform/models/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 class CustomCard extends StatelessWidget {

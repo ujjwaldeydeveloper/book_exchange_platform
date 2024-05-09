@@ -1,7 +1,7 @@
+import 'package:book_exchange_platform/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -70,7 +70,39 @@ class CustomAppBar extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ProfileScreen(),
+                      builder: (context) => ProfileScreen(
+                        appBar: AppBar(
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('User Profile'),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset('assets/images/ic_book_store.png')
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          SignedOutAction((context) async {
+                            Navigator.of(context).pop();
+                            //first debug sol not working
+                            await FirebaseAuth.instance.signOut();
+
+                            //second debug sol not working
+                            FirebaseAuth auth = FirebaseAuth.instance;
+                            auth.signOut().then((res) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()),
+                              );
+
+                            ////
+                            });
+                          })
+                        ],
+                      ),
                     ));
               },
               child: const Row(
