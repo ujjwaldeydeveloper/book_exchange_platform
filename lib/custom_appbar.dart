@@ -1,11 +1,30 @@
 import 'package:book_exchange_platform/home_page.dart';
+import 'package:book_exchange_platform/search_force_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
   const CustomAppBar({super.key});
+
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+  final itemKey = GlobalKey();
+
+  Future scrollToItem() async {
+    final context = itemKey.currentContext!;
+    await Scrollable.ensureVisible(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +71,26 @@ class CustomAppBar extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     )),
                 const Gap(50),
-                const Text(
-                  'CONTACT',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => scrollToItem(),
+                  child: const Text(
+                    'CONTACT',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const Gap(50),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                       return SearchForceView(); 
+                      })
+                    );
+                  },
+                  child: Icon(Icons.search)),
               ],
             ),
             const Gap(20),
