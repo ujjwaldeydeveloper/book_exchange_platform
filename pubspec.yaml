@@ -37,6 +37,8 @@ flutter:
 
   assets:
     - assets/images/ic_book_store.png
+    - assets/images/logo_large.png
+    - assets/images/TKAMB_1000_3D.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

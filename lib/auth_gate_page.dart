@@ -50,9 +50,12 @@ class AuthGate extends StatelessWidget {
             sideBuilder: (context, constraints) {
               return Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: AspectRatio(
-                    aspectRatio: 10,
-                    child: Image.asset('assets/images/logo_large.png')),
+                child: Transform.scale(
+                  scale: 6,
+                  child: AspectRatio(
+                      aspectRatio: 10,
+                      child: Image.asset('assets/images/logo_large.png')),
+                ),
               );
             },
           );
