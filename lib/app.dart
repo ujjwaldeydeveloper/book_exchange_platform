@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'custom_appbar.dart';
+import 'widgets/custom_appbar.dart';
 import 'home_page.dart';
 
 class MyApp extends StatelessWidget {

@@ -14,8 +14,12 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return SignInScreen(
-            providers: [EmailAuthProvider(),
-            GoogleProvider(clientId: '1007351467446-8s6qnlmqgg43rppneoc5vdpu4ksttboi.apps.googleusercontent.com')],
+            providers: [
+              EmailAuthProvider(),
+              GoogleProvider(
+                  clientId:
+                      '1007351467446-8s6qnlmqgg43rppneoc5vdpu4ksttboi.apps.googleusercontent.com'),
+            ],
             headerBuilder: (context, constraints, shrinkOffset) {
               return Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -28,14 +32,19 @@ class AuthGate extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: action == AuthAction.signIn
-                    ? const Text('Welcome to Book Exchange Point, Please sign in!')
-                    : const Text('Welcome to Book Exchange Point, Please sign up'),
+                    ? const Text(
+                        'Welcome to Book Exchange Point, Please sign in!')
+                    : const Text(
+                        'Welcome to Book Exchange Point, Please sign up'),
               );
             },
             footerBuilder: (context, action) {
               return const Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text('By signing in, you agree to our Terms and Consition', style:  TextStyle(color: Colors.grey),),
+                child: Text(
+                  'By signing in, you agree to our Terms and Consition',
+                  style: TextStyle(color: Colors.grey),
+                ),
               );
             },
             sideBuilder: (context, constraints) {
@@ -43,7 +52,7 @@ class AuthGate extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: AspectRatio(
                     aspectRatio: 10,
-                    child: Image.asset('assets/images/ic_book_store.png')),
+                    child: Image.asset('assets/images/logo_large.png')),
               );
             },
           );
